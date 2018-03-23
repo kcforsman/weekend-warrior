@@ -1,7 +1,12 @@
+require 'simplecov'
+SimpleCov.start
+
 gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require 'minitest/pride'
+
 require_relative 'robot_name'
+
 
 describe "Robot Name" do
   COMMAND_QUERY = <<-MSG
