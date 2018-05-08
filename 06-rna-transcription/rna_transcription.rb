@@ -1,25 +1,39 @@
 class Complement
   def self.of_dna rna
-    raise ArgumentError if !(rna.split("") - ["C", "G", "T", "A"]).empty?
-    complement = ""
     rna.length.times do | index |
-      complement << "G" if rna[index] == "C"
-      complement << "C" if rna[index] == "G"
-      complement << "A" if rna[index] == "T"
-      complement << "U" if rna[index] == "A"
+      if rna[index] == "C"
+        rna[index] = "G"
+      elsif rna[index] == "G"
+        rna[index] = "C"
+      elsif rna[index] == "T"
+        rna[index] = "A"
+      elsif rna[index] == "A"
+        rna[index] = "U"
+      else
+        raise ArgumentError.new(
+          "Wrong characters"
+        )
+      end
     end
-    complement
+    rna
   end
 
   def self.of_rna dna
-    raise ArgumentError if !(dna.split("") - ["C", "G", "U", "A"]).empty?
-    complement = ""
     dna.length.times do | index |
-      complement << "G" if dna[index] == "C"
-      complement << "C" if dna[index] == "G"
-      complement << "T" if dna[index] == "A"
-      complement << "A" if dna[index] == "U"
+      if dna[index] == "G"
+        dna[index] = "C"
+      elsif dna[index] == "C"
+        dna[index] = "G"
+      elsif dna[index] == "A"
+        dna[index] = "T"
+      elsif dna[index] == "U"
+        dna[index] = "A"
+      else
+        raise ArgumentError.new(
+          "Wrong characters"
+        )
+      end
     end
-    complement
+    dna
   end
 end
